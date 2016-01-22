@@ -367,7 +367,7 @@ func main() {
 		}
 
 		/* XXX: make connection string configurable */
-		db, err := sql.Open("postgres", "user=secretd dbname=secrets host=/run/postgresql sslmode=disable")
+		db, err := sql.Open("postgres", "sslmode=disable")
 		if err != nil {
 			log.Fatal(err)
 		}

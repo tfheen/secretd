@@ -1,0 +1,18 @@
+#! /bin/bash
+
+set -ex
+
+# Not supported by the go postgres driver
+unset PGSYSCONFDIR
+
+createdb secrets
+export PGDATABASE=secrets
+
+psql < doc/users.sql
+psql < doc/tables.sql
+psql < doc/functions.sql
+psql < doc/views.sql
+psql < doc/data.sql
+
+while true; do bin/secretd; done
+	      

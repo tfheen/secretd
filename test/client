@@ -1,0 +1,9 @@
+#! /bin/bash
+
+set -xe
+
+SSH_ORIGINAL_COMMAND="bin/secret-shell --action enrol test ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOI+485EYOY2s6rRYumsQmif2DRZD/FaaXKw67yeML0GuEft08rZDPMXYewk6lrjl05hqQUz5CVLKvcPbhNW9d4=" bin/secret-shell --principal admin --ssh
+SSH_ORIGINAL_COMMAND="bin/secret-shell --action group.list " bin/secret-shell --principal admin --ssh
+SSH_ORIGINAL_COMMAND="bin/secret-shell --action group.create users" bin/secret-shell --principal admin --ssh 
+SSH_ORIGINAL_COMMAND="bin/secret-shell --action group.member_add users test" bin/secret-shell --principal admin --ssh
+
