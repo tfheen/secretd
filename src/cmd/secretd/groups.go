@@ -96,7 +96,7 @@ func groupMemberList(db *sql.DB, principal, group string) (members []string, err
 }
 
 func groupMemberAdd(db *sql.DB, authPrincipal, group, principal string) (err error) {
-	if err = CheckAclNonHierarchical(db, principal, "group_manage"); err != nil {
+	if err = CheckAclNonHierarchical(db, authPrincipal, "group_manage"); err != nil {
 		return
 	}
 
@@ -109,7 +109,7 @@ func groupMemberAdd(db *sql.DB, authPrincipal, group, principal string) (err err
 }
 
 func groupMemberRemove(db *sql.DB, authPrincipal, group, principal string) (err error) {
-	if err = CheckAclNonHierarchical(db, principal, "group_manage"); err != nil {
+	if err = CheckAclNonHierarchical(db, authPrincipal, "group_manage"); err != nil {
 		return
 	}
 
