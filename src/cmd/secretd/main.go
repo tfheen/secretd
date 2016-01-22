@@ -19,14 +19,15 @@ package main
 import (
 	"database/sql"
 	"errors"
-	"github.com/davecgh/go-spew/spew"
-	message "github.com/fastly/secretd/model/message"
-	model "github.com/fastly/secretd/model/message/server"
-	_ "github.com/lib/pq"
 	"log"
 	"net"
 	"os"
 	"strings"
+
+	"github.com/davecgh/go-spew/spew"
+	_ "github.com/lib/pq"
+	message "model/message"
+	model "model/message/server"
 )
 
 // dbArrayToString converts a string slice into an array that can be

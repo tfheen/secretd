@@ -21,15 +21,16 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"github.com/davecgh/go-spew/spew"
-	"github.com/fastly/secretd/model/message"
-	"github.com/fastly/secretd/model/message/client"
 	"log"
 	"net"
 	"os"
 	"regexp"
 	"strconv"
 	"strings"
+
+	"github.com/davecgh/go-spew/spew"
+	"model/message"
+	"model/message/client"
 )
 
 var principal string

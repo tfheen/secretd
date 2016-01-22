@@ -19,8 +19,8 @@ package server
 import (
 	"encoding/json"
 	"github.com/davecgh/go-spew/spew"
-	message "github.com/fastly/secretd/model/message"
 	"io"
+	message "model/message"
 )
 
 func GetMessage(r io.Reader) (ret message.GenericMessage, err error) {
