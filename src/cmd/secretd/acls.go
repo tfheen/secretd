@@ -127,7 +127,7 @@ func aclSet(db *sql.DB, principal string, key []string, group string, permission
 			continue
 		}
 
-		_, err = db.Exec("INSERT INTO acls(secret_id, group_id, acl_type_id) SELECT $1, (SELECT group_id FROM groups WHERE name = $2), $3)", secretId, group, validPermissions[permission])
+		_, err = db.Exec("INSERT INTO acls(secret_id, group_id, acl_type_id) VALUES($1, (SELECT group_id FROM groups WHERE name = $2), $3)", secretId, group, validPermissions[permission])
 		if err != nil {
 			log.Fatal(err)
 			return err
