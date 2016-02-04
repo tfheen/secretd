@@ -6,4 +6,9 @@ SSH_ORIGINAL_COMMAND="bin/secret-shell --action enrol test ecdsa-sha2-nistp256 A
 SSH_ORIGINAL_COMMAND="bin/secret-shell --action group.list " bin/secret-shell --principal admin --ssh
 SSH_ORIGINAL_COMMAND="bin/secret-shell --action group.create users" bin/secret-shell --principal admin --ssh 
 SSH_ORIGINAL_COMMAND="bin/secret-shell --action group.member_add users test" bin/secret-shell --principal admin --ssh
-
+echo foo | SSH_ORIGINAL_COMMAND="bin/secret-shell --action secret.put a b" bin/secret-shell --principal admin --ssh
+SSH_ORIGINAL_COMMAND="bin/secret-shell --action acl.set users read,write a" bin/secret-shell --principal admin --ssh
+echo some_secret | SSH_ORIGINAL_COMMAND="bin/secret-shell --action secret.put a b c" bin/secret-shell --principal test --ssh
+SSH_ORIGINAL_COMMAND="bin/secret-shell --action secret.get a b c" bin/secret-shell --principal test --ssh
+SSH_ORIGINAL_COMMAND="bin/secret-shell --action enrol norights ssh-rsa asdf" bin/secret-shell --principal admin --ssh
+SSH_ORIGINAL_COMMAND="bin/secret-shell --action secret.get a b c" bin/secret-shell --principal norights --ssh
