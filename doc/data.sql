@@ -16,6 +16,10 @@ INSERT INTO group_membership (group_id, principal_id) VALUES ((SELECT group_id F
 INSERT INTO acls (secret_id, group_id, acl_type_id) VALUES (NULL, (SELECT group_id FROM groups WHERE name = 'admin'), (SELECT acl_type_id FROM acl_types WHERE name = 'principal_manage'));
 INSERT INTO acls (secret_id, group_id, acl_type_id) VALUES (NULL, (SELECT group_id FROM groups WHERE name = 'admin'), (SELECT acl_type_id FROM acl_types WHERE name = 'group_manage'));
 INSERT INTO acls (secret_id, group_id, acl_type_id) VALUES (NULL, (SELECT group_id FROM groups WHERE name = 'admin'), (SELECT acl_type_id FROM acl_types WHERE name = 'manage'));
+INSERT INTO acls (secret_id, group_id, acl_type_id) VALUES (NULL, (SELECT group_id FROM groups WHERE name = 'admin'), (SELECT acl_type_id FROM acl_types WHERE name = 'write'));
+INSERT INTO acls (secret_id, group_id, acl_type_id) VALUES (NULL, (SELECT group_id FROM groups WHERE name = 'admin'), (SELECT acl_type_id FROM acl_types WHERE name = 'read'));
+INSERT INTO acls (secret_id, group_id, acl_type_id) VALUES (NULL, (SELECT group_id FROM groups WHERE name = 'admin'), (SELECT acl_type_id FROM acl_types WHERE name = 'enrol'));
+
 INSERT INTO acls (secret_id, group_id, acl_type_id) VALUES (NULL, (SELECT group_id FROM groups WHERE name = 'admin'), (SELECT acl_type_id FROM acl_types WHERE name = 'enrol'));
 
 COMMIT;
