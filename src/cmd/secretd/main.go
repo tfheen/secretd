@@ -85,7 +85,7 @@ func putSecret(db *sql.DB, principal string, key []string, secret string) (err e
 	var id uint64
 	k := dbArrayToString(key)
 	// Check ACL
-	rows, err := db.Query("SELECT * FROM acl_tree WHERE arraycontains($1::text[], acl_tree.path) AND acl_type = 'write'", k)
+	rows, err := db.Query("SELECT * FROM acl_tree WHERE principal = $1 AND arraycontains($2::text[], acl_tree.path) AND acl_type = 'write'", principal, k)
 	if err != nil {
 		log.Fatal(err)
 		return err
