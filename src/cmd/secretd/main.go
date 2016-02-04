@@ -295,8 +295,9 @@ func secretServer(c net.Conn, db *sql.DB) {
 			lines, err := generateAuthorizedKeys(db)
 
 			kfile := "/home/secrets/.ssh/authorized_keys"
+			kfiletmp := kfile + ".tmp"
 			// XXX: hard coded
-			authorizedKeys, err := os.Create(kfile)
+			authorizedKeys, err := os.Create(kfiletmp)
 			if err != nil {
 				panic(err)
 			}
@@ -309,7 +310,7 @@ func secretServer(c net.Conn, db *sql.DB) {
 				}
 			}
 			authorizedKeys.Close()
-			err = os.Rename(kfile+".tmp", kfile)
+			err = os.Rename(kfiletmp, kfile)
 			if err != nil {
 				// XXX: log
 				panic(err)
